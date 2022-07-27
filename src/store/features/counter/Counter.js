@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { Button } from '@shopify/polaris';
+
 import { decrement, increment } from './counterSlice';
 
 export function Counter() {
@@ -10,19 +12,19 @@ export function Counter() {
   return (
     <div>
       <div>
-        <button
+        <Button
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
         >
           Increment
-        </button>
-        <span>{count}</span>
-        <button
+        </Button>
+        <h1>{count}</h1>
+        <Button
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
         >
           Decrement
-        </button>
+        </Button>
       </div>
     </div>
   );

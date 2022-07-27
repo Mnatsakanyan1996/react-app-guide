@@ -1,5 +1,11 @@
+import { Page, Card, Button } from '@shopify/polaris';
+
 export default function About() {
   return (
-    <>About</>
-  )
+    <Page title="About page">
+      <Card sectioned>
+        <Button url='/'>Example button</Button>
+      </Card>
+    </Page>
+  );
 }
