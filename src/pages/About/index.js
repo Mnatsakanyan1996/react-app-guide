@@ -1,5 +1,5 @@
 export default function About() {
   return (
-    <>About</>
+    <div>About</div>
   )
 }
