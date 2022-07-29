@@ -1,5 +1,7 @@
+import Loader from 'components/Loader';
+
 export default function About() {
   return (
-    <>About</>
+    <><Loader isShow/></>
   )
 }
