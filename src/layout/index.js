@@ -1,8 +1,10 @@
-import { domainUrl } from 'configs';
+import { baseUrl, version, partnerGuid, recaptchaSiteKey, partnerAlias, iconUrl } from 'configs';
 import { Link } from 'react-router-dom';
 import { Counter } from 'store/features/counter/Counter';
 
 import MainRoutes from './MainRoutes';
+
+import 'antd/dist/antd.min.css'
 
 export default function Layout() {
   return (
@@ -11,7 +13,17 @@ export default function Layout() {
       <h1 className="text-3xl text-center font-bold underline">
         Hello world!
         <br />
-        {domainUrl}
+        {baseUrl}
+        <br/>
+        {version}
+        <br/>
+        {partnerGuid}
+        <br/>
+        {recaptchaSiteKey}
+        <br/>
+        {partnerAlias}
+        <br/>
+        {iconUrl}
       </h1>
 
       <Link to={'./'}>home</Link>
@@ -19,6 +31,7 @@ export default function Layout() {
 
       {/* @reduxjs/toolkit example */}
       <Counter />
+      
       <MainRoutes />
     </div>
   );
