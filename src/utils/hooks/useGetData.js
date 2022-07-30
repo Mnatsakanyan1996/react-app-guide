@@ -1,22 +1,21 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 import Fetch from 'utils/fetch';
 
-const useFetch = (
+const useGetData = (
   url,
   initialData,
-  method = 'POST'
 ) => {
   const [data, setData] = useState(initialData);
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchData = useCallback(async data => {
-    if (!url) return;
+  const fetchData = useCallback(async newUrl => {
+    if (!newUrl) return;
     setIsLoading(true);
     setHasError(false);
 
-    const response = await Fetch[method](url, data);
+    const response = await Fetch.GET(newUrl);
     if (response.ok && !response.hasError) {
       setData(response.data);
     } else {
@@ -25,9 +24,13 @@ const useFetch = (
 
     setIsLoading(false);
     return response;
-  }, [method, url]);
+  }, []);
+
+  useEffect(() => {
+    fetchData(url);
+  }, [fetchData, url]);
 
   return { data, fetchData, isLoading, setData, hasError };
 };
 
-export default useFetch;
+export default useGetData;

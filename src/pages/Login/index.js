@@ -1,9 +1,9 @@
 import React from 'react';
-import useFetch from 'utils/hooks/useFetch';
+import useGetData from 'utils/hooks/useGetData';
 
 export default function LoginPage() {
 
-  const res = useFetch(null, 'https://dog.ceo/api/breeds/image/random');
+  const res = useGetData('https://dog.ceo/api/breeds/image/random');
 
   if (!res.response) {
     return <div>Loading...</div>;
