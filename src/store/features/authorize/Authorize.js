@@ -18,9 +18,11 @@ export const Authorize = ({
 
   return (
     <Loader isShow={isLoggedIn === null}>
-      {content}
       {/* Example */}
-      <Button onClick={() => dispatch(toggleState())}>click</Button>
+      <Button onClick={() => dispatch(toggleState())}>
+        {isLoggedIn ? 'Log out' : 'Log in'}
+      </Button>
+      {content}
     </Loader>
   );
 };

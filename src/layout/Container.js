@@ -11,8 +11,6 @@ import MainRoutes from '../routes';
 import AppHeader from './Header';
 import NavigationMenu from './NavigationMenu';
 
-import './index.scss';
-
 const { Content, Sider, Header } = Layout;
 
 const Container = () => {
