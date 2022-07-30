@@ -5,7 +5,7 @@ class Fetch {
     const token = getToken();
     const herder = new Headers();
     herder.append('content-type', 'application/json');
-    herder.append('authorization', token);
+    token && herder.append('authorization', token);
     return herder;
   };
 
@@ -13,9 +13,9 @@ class Fetch {
     try {
       const response = await fetch(url, options);
       const data = await response.json();
-      return { data, status: response.status, ok: response.ok, hasError: false };
+      return { data: data?.Data, status: response.status, ok: response.ok, hasError: false };
     } catch {
-      return { data: null, status: null, ok: false, hasError: false };
+      return { data: null, status: null, ok: false, hasError: true };
     }
   };
 

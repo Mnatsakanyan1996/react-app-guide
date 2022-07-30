@@ -11,6 +11,11 @@ const useFetch = (
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const handleResponse = useCallback(newData => {
+    setIsLoading(false);
+    return newData;
+  }, []);
+
   const fetchData = useCallback(async data => {
     if (!url) return;
     setIsLoading(true);
@@ -19,13 +24,12 @@ const useFetch = (
     const response = await Fetch[method](url, data);
     if (response.ok && !response.hasError) {
       setData(response.data);
+      return handleResponse(response.data);
     } else {
       setHasError(true);
+      return handleResponse(null);
     }
-
-    setIsLoading(false);
-    return response;
-  }, [method, url]);
+  }, [handleResponse, method, url]);
 
   return { data, fetchData, isLoading, setData, hasError };
 };
