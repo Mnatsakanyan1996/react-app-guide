@@ -6,7 +6,7 @@ import Button from 'antd/lib/button';
 import MenuFoldOutlined from '@ant-design/icons/MenuFoldOutlined';
 import MenuUnfoldOutlined from '@ant-design/icons/MenuUnfoldOutlined';
 
-import { logout } from 'store/features/authorize/authorizeSlice';
+import { logout } from 'store/features/authorize';
 
 export default function AppHeader({ collapsed, setCollapsed }) {
   const dispatch = useDispatch();
