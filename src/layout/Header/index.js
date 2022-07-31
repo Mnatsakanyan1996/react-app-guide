@@ -6,7 +6,7 @@ import Button from 'antd/lib/button';
 import MenuFoldOutlined from '@ant-design/icons/MenuFoldOutlined';
 import MenuUnfoldOutlined from '@ant-design/icons/MenuUnfoldOutlined';
 
-import { toggleState } from 'store/features/authorize/authorizeSlice';
+import { logout } from 'store/features/authorize/authorizeSlice';
 
 export default function AppHeader({ collapsed, setCollapsed }) {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export default function AppHeader({ collapsed, setCollapsed }) {
       })}
       
       {/* Example */}
-      <Button onClick={() => dispatch(toggleState())}>
+      <Button onClick={() => dispatch(logout())}>
         {isLoggedIn ? 'Log out' : 'Log in'}
       </Button>
     </div>

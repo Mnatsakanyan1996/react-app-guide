@@ -2,22 +2,27 @@ import { createSlice } from '@reduxjs/toolkit';
 import { partnerAlias } from 'configs';
 
 const initialState = {
-  user: localStorage.getItem(`user-${partnerAlias}`) || null,
-  isLoggedIn: !!localStorage.getItem(`user-${partnerAlias}`),
+  user: null,
+  isLoggedIn: !!localStorage.getItem(`token-${partnerAlias}`),
 };
 
 export const authorizeSlice = createSlice({
   name: 'authorize',
   initialState,
   reducers: {
-    toggleState: (state, data) => {
+    login: (state, data) => {
       state.user = data.payload;
-      localStorage.setItem(`user-${partnerAlias}`, JSON.stringify(data.payload));
-      state.isLoggedIn = !state.isLoggedIn;
+      localStorage.setItem(`token-${partnerAlias}`, JSON.stringify(data.payload.a1));
+      state.isLoggedIn = true;
+    },
+    logout: (state) => {
+      state.user = null;
+      localStorage.removeItem(`token-${partnerAlias}`);
+      state.isLoggedIn = false;
     },
   },
 });
 
-export const { toggleState } = authorizeSlice.actions;
+export const { login, logout } = authorizeSlice.actions;
 
 export default authorizeSlice.reducer;
