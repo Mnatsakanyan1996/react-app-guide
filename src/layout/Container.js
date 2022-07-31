@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import { Layout } from 'antd';
 
-import { Counter } from 'store/features/counter/Counter';
 import { baseUrl, version, partnerGuid, recaptchaSiteKey, partnerAlias, iconUrl } from 'configs';
 
 import MainRoutes from '../routes';
@@ -53,9 +52,6 @@ const Container = () => {
 
             <Link to={'./'}>home</Link>
             <Link to={'./about'}>about</Link>
-
-            {/* @reduxjs/toolkit example */}
-            <Counter />
 
             <MainRoutes />
           </div>
