@@ -3,23 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Menu from 'antd/lib/menu';
 
-import MailOutlined from '@ant-design/icons/MailOutlined';
-
 import Loader from 'components/Loader';
 
 import useMount from 'utils/hooks/useMount';
 import { fetchMenuItems, setSelectedItem } from 'store/features/menu';
 
-function getItem(label, key, icon, children, type) {
-  const obj = { key, icon: <MailOutlined />, label };
-  if (children?.length) {
-    return {
-      ...obj,
-      children: children.map(item => getItem(item.a2, item.a1, item.a1, item.a5)),
-    };
-  }
-  return obj;
-}
+import { getItem } from './utils';
 
 export default function NavigationMenu() {
   const dispatch = useDispatch();
