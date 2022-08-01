@@ -13,17 +13,26 @@ export const fetchMenuItems = createAsyncThunk(
 
 const initialState = {
   items: [],
+  selectedItem: null,
+  selectedMainItem: null,
 };
 
 const menuSlice = createSlice({
   name: 'menu',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedMainItem: (state, data) => {
+      state.selectedMainItem = data.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchMenuItems.fulfilled, (state, action) => {
       state.items = action.payload;
+      state.selectedMainItem = action.payload?.[0];
     });
   },
 });
+
+export const { setSelectedMainItem } = menuSlice.actions;
 
 export default menuSlice.reducer;
