@@ -3,21 +3,15 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { MENU_ITEMS } from 'api';
 import Fetch from 'utils/fetch';
 
+import { getSelectedItem } from './utils';
+
 export const fetchMenuItems = createAsyncThunk(
-  'users/menuItems',
+  'menu/getMenuItems',
   async () => {
     const response = await Fetch.POST(MENU_ITEMS, {});
     return response.data;
   }
 );
-
-// Hard code - a5
-const getSelectedItem = selectedMainItem => {
-  if (selectedMainItem?.a5?.length) {
-    return getSelectedItem(selectedMainItem.a5[0]);
-  }
-  return selectedMainItem;
-};
 
 const initialState = {
   items: [],
