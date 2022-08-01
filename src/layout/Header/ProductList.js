@@ -13,6 +13,7 @@ export default function ProductList() {
 
   const menuItems = useSelector(state => state.menu.items);
   const selectedMainItem = useSelector(state => state.menu.selectedMainItem);
+  const loading = useSelector(state => state.menu.loading);
 
   const handleMenuClick = useCallback((e) => {
     dispatch(setSelectedMainItem(menuItems.find(item => item.a1 === e.key)));
@@ -45,9 +46,7 @@ export default function ProductList() {
         <Tooltip title="tooltip" key="leftButton">
           {leftButton}
         </Tooltip>,
-        cloneElement(rightButton, {
-          loading: !menuItems?.length,
-        }),
+        cloneElement(rightButton, { loading }),
       ]}
     >
       {selectedMainItem?.a2}

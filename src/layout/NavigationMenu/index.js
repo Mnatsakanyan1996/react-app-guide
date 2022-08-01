@@ -8,7 +8,7 @@ import MailOutlined from '@ant-design/icons/MailOutlined';
 import Loader from 'components/Loader';
 
 import useMount from 'utils/hooks/useMount';
-import { fetchMenuItems } from 'store/features/menu';
+import { fetchMenuItems, setSelectedItem } from 'store/features/menu';
 
 function getItem(label, key, icon, children, type) {
   const obj = { key, icon: <MailOutlined />, label };
@@ -25,6 +25,8 @@ export default function NavigationMenu() {
   const dispatch = useDispatch();
 
   const menuItems = useSelector(state => state.menu.items);
+  const loading = useSelector(state => state.menu.loading);
+  const selectedItem = useSelector(state => state.menu.selectedItem);
   const selectedMainMenuItem = useSelector(state => state.menu.selectedMainItem);
 
   useMount(() => {
@@ -38,15 +40,18 @@ export default function NavigationMenu() {
       .map(item => getItem(item.a2, item.a1, item.a1, item.a5));
   }, [menuItems, selectedMainMenuItem]);
 
+  const handleOnClick = e => {
+    const item = menuItems.find(menuItem => menuItem.a1 === e.key);
+    dispatch(setSelectedItem(item));
+  };
+
   return (
-    <Loader isShow={!menuItems?.length}>
+    <Loader isShow={loading}>
       <div className="logo" />
       <Menu
-        style={{
-          width: 256,
-        }}
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
+        onClick={handleOnClick}
+        defaultSelectedKeys={[selectedItem?.a1]}
+        // TODO: Add defaultOpenKeys
         mode="inline"
         items={items}
         theme="dark"

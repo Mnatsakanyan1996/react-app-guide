@@ -11,8 +11,17 @@ export const fetchMenuItems = createAsyncThunk(
   }
 );
 
+// Hard code - a5
+const getSelectedItem = selectedMainItem => {
+  if (selectedMainItem?.a5?.length) {
+    return getSelectedItem(selectedMainItem.a5[0]);
+  }
+  return selectedMainItem;
+};
+
 const initialState = {
   items: [],
+  loading: false,
   selectedItem: null,
   selectedMainItem: null,
 };
@@ -24,15 +33,26 @@ const menuSlice = createSlice({
     setSelectedMainItem: (state, data) => {
       state.selectedMainItem = data.payload;
     },
+    setSelectedItem: (state, data) => {
+      state.selectedItem = data.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchMenuItems.fulfilled, (state, action) => {
+      state.loading = false;
       state.items = action.payload;
       state.selectedMainItem = action.payload?.[0];
+      state.selectedItem = getSelectedItem(action.payload?.[0]);
+    });
+    builder.addCase(fetchMenuItems.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchMenuItems.rejected, (state) => {
+      state.loading = false;
     });
   },
 });
 
-export const { setSelectedMainItem } = menuSlice.actions;
+export const { setSelectedMainItem, setSelectedItem } = menuSlice.actions;
 
 export default menuSlice.reducer;
