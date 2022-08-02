@@ -49,6 +49,10 @@ export default function ProductList() {
         cloneElement(rightButton, { loading }),
       ]}
     >
+      <Image
+        width={25}
+        src={`https://resources.besofted.com/images/admin/icons/${selectedMainItem.a1}.svg`}
+      />
       {selectedMainItem?.a2}
     </Dropdown.Button>
   );

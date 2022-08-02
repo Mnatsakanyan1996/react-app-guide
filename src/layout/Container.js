@@ -15,7 +15,7 @@ const Container = () => {
 
   return (
     <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+      <Sider theme="light" trigger={null} collapsible collapsed={collapsed}>
         <NavigationMenu />
       </Sider>
       <Layout className="site-layout">
