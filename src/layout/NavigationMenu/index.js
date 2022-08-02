@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Menu from 'antd/lib/menu';
@@ -24,24 +24,22 @@ export default function NavigationMenu() {
 
   const items = useMemo(() => {
     if (!menuItems?.length) return [];
-    return menuItems
-      .find(mainItem => mainItem.a1 === selectedMainMenuItem.a1)?.a5
-      .map(item => getItem(item.a2, item.a1, item.a5, item));
+    return selectedMainMenuItem?.a5.map(item => getItem(item.a2, item.a1, item.a5, item));
   }, [menuItems, selectedMainMenuItem]);
 
-  const handleOnClick = useCallback(e => {
+  const handleOnClick = e => {
     dispatch(setSelectedItem(e?.item?.props?.data));
-  }, [dispatch]);
+  };
 
   return (
     <Loader isShow={loading}>
       <div className="logo" />
+      {/* TODO: Add defaultOpenKeys */}
       <Menu
+        items={items}
+        mode="inline"
         onClick={handleOnClick}
         defaultSelectedKeys={[selectedItem?.a1]}
-        // TODO: Add defaultOpenKeys
-        mode="inline"
-        items={items}
       />
     </Loader>
   );
