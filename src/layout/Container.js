@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import { Layout } from 'antd';
 
@@ -31,8 +30,6 @@ const Container = () => {
           }}
         >
           <div>
-            <Link to={'./'}>home</Link>
-            <Link to={'./about'}>about</Link>
             <MainRoutes />
           </div>
         </Content>
