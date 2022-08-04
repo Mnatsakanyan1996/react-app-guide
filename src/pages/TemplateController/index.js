@@ -8,10 +8,10 @@ import { apiUrl } from 'configs';
 import useFetch from 'utils/hooks/useFetch';
 
 export default function TemplateController() {
-  const selectedItem = useSelector(state => state.menu.selectedItem);
   const loading = useSelector(state => state.menu.loading);
+  const selectedItem = useSelector(state => state.menu.selectedItem);
 
-  const { data, fetchData, isLoading } = useFetch(`${apiUrl}/${selectedItem?.a3}`);
+  const { data, fetchData, isLoading } = useFetch(selectedItem && `${apiUrl}/${selectedItem?.a3}`);
 
   useEffect(() => {
     if (selectedItem) {

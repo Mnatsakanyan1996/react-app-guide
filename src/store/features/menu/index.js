@@ -26,6 +26,7 @@ const menuSlice = createSlice({
   reducers: {
     setSelectedMainItem: (state, data) => {
       state.selectedMainItem = data.payload;
+      state.selectedItem = data.payload && getSelectedItem(data.payload.a5?.[0]);
     },
     setSelectedItem: (state, data) => {
       state.selectedItem = data.payload;

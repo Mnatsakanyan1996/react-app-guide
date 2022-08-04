@@ -39,7 +39,7 @@ export default function NavigationMenu() {
         items={items}
         mode="inline"
         onClick={handleOnClick}
-        defaultSelectedKeys={[selectedItem?.a1]}
+        selectedKeys={[selectedItem?.a1]}
       />
     </Loader>
   );

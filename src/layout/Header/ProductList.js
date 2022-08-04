@@ -12,8 +12,8 @@ export default function ProductList() {
   const dispatch = useDispatch();
 
   const menuItems = useSelector(state => state.menu.items);
-  const selectedMainItem = useSelector(state => state.menu.selectedMainItem);
   const loading = useSelector(state => state.menu.loading);
+  const selectedMainItem = useSelector(state => state.menu.selectedMainItem);
 
   const handleMenuClick = useCallback((e) => {
     dispatch(setSelectedMainItem(menuItems.find(item => item.a1 === e.key)));
