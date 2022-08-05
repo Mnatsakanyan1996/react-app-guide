@@ -7,16 +7,17 @@ import Loader from 'components/Loader';
 
 import useMount from 'utils/hooks/useMount';
 import { fetchMenuItems, setSelectedItem } from 'store/features/menu';
+import { menuItemsSelector, menuLoadingSelector, menuSelectedItemSelector, menuSelectedMainItemSelector } from 'store/selectors';
 
 import { getItem } from './utils';
 
 export default function NavigationMenu() {
   const dispatch = useDispatch();
 
-  const menuItems = useSelector(state => state.menu.items);
-  const loading = useSelector(state => state.menu.loading);
-  const selectedItem = useSelector(state => state.menu.selectedItem);
-  const selectedMainMenuItem = useSelector(state => state.menu.selectedMainItem);
+  const menuItems = useSelector(menuItemsSelector);
+  const loading = useSelector(menuLoadingSelector);
+  const selectedItem = useSelector(menuSelectedItemSelector);
+  const selectedMainMenuItem = useSelector(menuSelectedMainItemSelector);
 
   useMount(() => {
     dispatch(fetchMenuItems());

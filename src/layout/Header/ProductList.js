@@ -7,13 +7,18 @@ import Tooltip from 'antd/lib/tooltip';
 import Dropdown from 'antd/lib/dropdown';
 
 import { setSelectedMainItem } from 'store/features/menu';
+import {
+  menuItemsSelector,
+  menuLoadingSelector,
+  menuSelectedMainItemSelector,
+} from 'store/selectors';
 
 export default function ProductList() {
   const dispatch = useDispatch();
 
-  const menuItems = useSelector(state => state.menu.items);
-  const loading = useSelector(state => state.menu.loading);
-  const selectedMainItem = useSelector(state => state.menu.selectedMainItem);
+  const menuItems = useSelector(menuItemsSelector);
+  const loading = useSelector(menuLoadingSelector);
+  const selectedMainItem = useSelector(menuSelectedMainItemSelector);
 
   const handleMenuClick = useCallback((e) => {
     dispatch(setSelectedMainItem(menuItems.find(item => item.a1 === e.key)));

@@ -8,12 +8,16 @@ import AppTable from 'components/Table';
 
 import { apiUrl } from 'configs';
 import useFetch from 'utils/hooks/useFetch';
+import {
+  menuLoadingSelector,
+  menuSelectedItemSelector,
+} from 'store/selectors';
 
 import Filter from './Filter';
 
 export default function TemplateController() {
-  const loading = useSelector(state => state.menu.loading);
-  const selectedItem = useSelector(state => state.menu.selectedItem);
+  const loading = useSelector(menuLoadingSelector);
+  const selectedItem = useSelector(menuSelectedItemSelector);
 
   const { data, fetchData, isLoading } = useFetch(selectedItem && `${apiUrl}/${selectedItem?.a3}`);
 

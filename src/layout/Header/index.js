@@ -7,13 +7,14 @@ import MenuFoldOutlined from '@ant-design/icons/MenuFoldOutlined';
 import MenuUnfoldOutlined from '@ant-design/icons/MenuUnfoldOutlined';
 
 import { logout } from 'store/features/authorize';
+import { isLoggedInSelector } from 'store/selectors';
 
 import ProductList from './ProductList';
 
 export default function AppHeader({ collapsed, setCollapsed }) {
   const dispatch = useDispatch();
  
-  const isLoggedIn = useSelector(state => state.authorize.isLoggedIn);
+  const isLoggedIn = useSelector(isLoggedInSelector);
 
   return (
     <div>

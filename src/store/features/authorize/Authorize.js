@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux';
 import LoginPage from 'pages/Login';
 import Loader from 'components/Loader';
 
+import { isLoggedInSelector } from 'store/selectors';
+
 export const Authorize = ({
   fallback = <LoginPage />,
   children,
 }) => {
-  const isLoggedIn = useSelector(state => state.authorize.isLoggedIn);
+  const isLoggedIn = useSelector(isLoggedInSelector);
 
   const content = isLoggedIn ? children : fallback;
 

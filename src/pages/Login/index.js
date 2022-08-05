@@ -8,10 +8,12 @@ import Checkbox from 'antd/lib/checkbox';
 import Loader from 'components/Loader';
 
 import { fetchUserLogin } from 'store/features/authorize';
+import { authorizeLoadingSelector } from 'store/selectors';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
-  const loading = useSelector(state => state.authorize.loading);
+
+  const loading = useSelector(authorizeLoadingSelector);
 
   const onFinish = async values => {
     dispatch(fetchUserLogin(values));
