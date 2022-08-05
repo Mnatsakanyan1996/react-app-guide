@@ -25,7 +25,6 @@ export default function AppHeader({ collapsed, setCollapsed }) {
 
       <ProductList />
 
-      {/* Example */}
       <Button onClick={() => dispatch(logout())}>
         {isLoggedIn ? 'Log out' : 'Log in'}
       </Button>
