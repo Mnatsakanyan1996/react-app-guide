@@ -1,7 +1,10 @@
-// Hard code - a5
 export const getSelectedItem = selectedMainItem => {
-  if (selectedMainItem?.a5?.length) {
+  if (!selectedMainItem) return;
+  if (selectedMainItem.a5?.length) {
     return getSelectedItem(selectedMainItem.a5[0]);
   }
-  return selectedMainItem;
+  return {
+    ...selectedMainItem,
+    a6: JSON.parse(selectedMainItem.a6),
+  };
 };
