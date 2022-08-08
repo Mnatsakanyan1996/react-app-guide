@@ -12,6 +12,7 @@ import {
   menuLoadingSelector,
   menuSelectedMainItemSelector,
 } from 'store/selectors';
+import { iconUrl } from 'configs';
 
 export default function ProductList() {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ export default function ProductList() {
           label: item.a2,
           icon: <Image
             width={25}
-            src={`https://resources.besofted.com/images/admin/icons/${item.a1}.svg`}
+            src={`${iconUrl}/${item.a1}.svg`}
           />
         }))
       : [];
@@ -57,7 +58,7 @@ export default function ProductList() {
       {selectedMainItem && <>
         <Image
           width={25}
-          src={`https://resources.besofted.com/images/admin/icons/${selectedMainItem.a1}.svg`}
+          src={`${iconUrl}/${selectedMainItem.a1}.svg`}
         />
         {selectedMainItem.a2}
       </>}

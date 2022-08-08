@@ -22,8 +22,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-soft": "env-cmd -f configs/.env.soft react-scripts start",
-    "build-soft": "env-cmd -f configs/.env.soft react-scripts build",
     "build": "react-scripts build",
     "build-dev": "env-cmd -f .env.development react-scripts build",
     "test": "react-scripts test",

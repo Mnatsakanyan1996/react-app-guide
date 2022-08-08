@@ -1,5 +1,7 @@
 import Image from 'antd/lib/image';
 
+import { iconUrl } from 'configs';
+
 export function getItem(label, key, children, data) {
   const obj = {
     key,
@@ -7,7 +9,7 @@ export function getItem(label, key, children, data) {
     label,
     icon: <Image
       width={25}
-      src={`https://resources.besofted.com/images/admin/icons/${key}.svg`}
+      src={`${iconUrl}/${key}.svg`}
     />,
   };
   if (children?.length) {
